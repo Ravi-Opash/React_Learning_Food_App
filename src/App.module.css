@@ -1,0 +1,24 @@
+body{
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuhsO57-ZdF7RSjwdEBGtqmKCHo1DhU7ePPCtxzjo3D0KNHh0A2kBgUWIV0UaRT7DGn44&usqp=CAU);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: fixed;
+  background-color: rgb(34, 33, 33);
+}
+
+.App {
+  text-align: center;
+}
+
+.foodInfo{
+  width: 60%;
+  margin: 0% auto;
+  padding: 10px;
+  background-color: rgb(61, 60, 60);
+  border-radius: 20px;
+  box-shadow: 0px 5px 6px rgba(49, 48, 48, 0.29);
+  color: white;
+  text-align: center;
+  margin-top: 30%;
+}
+

@@ -1,0 +1,47 @@
+.main_item_box {
+  display: flex;
+  background-color: white;
+  width: 100%;
+  line-height: 8px;
+  border-bottom: 1px solid rgb(184, 179, 179);
+}
+
+.item_box_left {
+  width: 50%;
+  display: block;
+  text-align: left;
+}
+
+.item_box_left p {
+  font-style: italic;
+}
+
+#price {
+  font-style: normal;
+  color: rgb(110, 69, 10);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.item_box_right {
+  display: block;
+  width: 50%;
+  text-align: right;
+}
+
+.input {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.input input{
+    height: 20px;
+    margin: auto 0;
+    width: 50px;
+}
+
+.add_button {
+  margin-top: 10px;
+  margin-right: 10px;
+}

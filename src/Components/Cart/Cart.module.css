@@ -1,0 +1,21 @@
+.main_cart_box {
+  display: block;
+  width: 50%;
+  margin: 0% auto;
+}
+
+.cart_amount {
+  display: flex;
+}
+
+.cart_amount .msg {
+  float: left;
+}
+.cart_amount .totalAmount {
+  float: right;
+}
+
+.cart_btns {
+  display: flex;
+  float: right;
+}

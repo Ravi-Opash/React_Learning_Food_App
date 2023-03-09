@@ -1,0 +1,68 @@
+.main_header {
+  background-color: rgb(131, 20, 20);
+  margin: 0%;
+  padding: 15px 10%;
+  display: flex;
+  top: 0px;
+}
+
+header{
+  position:sticky;
+  top: 0;
+}
+
+.header_left {
+  width: 50%;
+  margin: auto 0;
+}
+
+.header_left h2 {
+  color: white;
+  margin: 0;
+  text-align: left;
+}
+
+.header_right {
+  display: flex;
+  width: 50%;
+  justify-content: flex-end;
+  float: right;
+}
+
+.header_cart {
+  background-color: rgb(53, 25, 25, 0.7);
+  border-radius: 20px;
+  width: 250px;
+  padding: 0 10px;
+  display: flex;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.header_cart_right {
+  width: 30%;
+}
+
+.header_cart_left {
+  width: 70%;
+  margin: auto 0;
+  display: flex;
+  justify-content: center;
+
+}
+.header_cart_left img {
+  width: 25px;
+  padding-right: 10px;
+}
+
+.header_cart_right {
+  background-color: brown;
+  font-weight: 700;
+  font-size: 1.3rem;
+  width: 40px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+}
+
