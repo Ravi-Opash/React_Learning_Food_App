@@ -1,6 +1,6 @@
 .main_cart_box {
   position: absolute;
-  top: 20%;
+  top: 20vw;
   display: block;
   width: 46%;
   left:  25%;
@@ -14,7 +14,7 @@
 .cart_amount {
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: flex-end;
   gap: 10%;
 }
 

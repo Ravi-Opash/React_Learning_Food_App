@@ -1,13 +1,23 @@
 import style from "./Header.module.css";
+import CartContext from "../../store/CartContext";
+import { useContext } from "react";
 
-const Header = () => {
+const Header = (props) => {
+
+  const cartCtx = useContext(CartContext);
+  console.log(cartCtx.items); 
+
+  const totalOrderItemCount = cartCtx.items.reduce((curNumber, item)=> {
+    return curNumber + item.amount;
+  }, 0)
+
   return (
     <header>
       <div className={style.main_header}>
         <div className={style.header_left}>
           <h2>ReactMeals</h2>
         </div>
-        <div className={style.header_right}>
+        <div className={style.header_right} onClick={props.onShowCart}>
           <div className={style.header_cart}>
             <div className={style.header_cart_left}>
               <img
@@ -16,7 +26,7 @@ const Header = () => {
               />
               <span>Your Cart</span>
             </div>
-            <div className={style.header_cart_right}>{0}</div>
+            <div className={style.header_cart_right}>{totalOrderItemCount}</div>
           </div>
         </div>
       </div>

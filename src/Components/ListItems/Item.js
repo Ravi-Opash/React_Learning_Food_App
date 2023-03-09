@@ -1,26 +1,26 @@
-// import { useContext } from "react";
-// import DataContext from "../../store/dataContext";
+import CartContext from "../../store/CartContext";
+import { useContext } from "react";
 import Button from "../UI/Button";
 import style from "./Item.module.css";
 
 const Item = (props) => {
-    // const ctx = useContext(DataContext)
-    // let totalOrder = 0;
+    const ctx = useContext(CartContext)
 
     const onOrderValueChange = (event) => {
-    //   ctx.totalOrder = +event.target.value;
+       return(console.log(event.target.value)) 
     }
 
     const onAddBtn = (event) => {
-        // totalOrder = +event.target.value;
+        ctx.addItem({
+            id: props.id,
+            name: props.name,
+            info: props.info,
+            price: props.price,
+            count: props.count,
+        });
     }
 
     // console.log(totalOrder)
-
-    
-
-
-
 
   return (
     <div className={style.main_item_box}>

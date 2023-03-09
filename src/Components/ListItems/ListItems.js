@@ -1,8 +1,7 @@
 import Item from "./Item";
 import style from "./ListItems.module.css";
 
-const ListItems = () => {
-  let lists = [
+let lists = [
     {
       id: "Sushi",
       name: "Sushi",
@@ -25,6 +24,12 @@ const ListItems = () => {
         count: 0,
       }
   ];
+
+
+const ListItems = () => {
+  
+  
+
   return (
     <div className={style.listItems}>
       {lists.map((item) => (
