@@ -3,21 +3,21 @@ import style from "./ListItems.module.css";
 
 let lists = [
     {
-      id: "Sushi",
+      id: "i1",
       name: "Sushi",
       info: "Finest fish and veggies",
       price: 22.99,
       count: 0,
     },
     {
-        id: "Sndwitch",
+        id: "i2",
         name: "Sndwitch",
         info: "Finest fish and veggies",
         price: 17.99,
         count: 0,
       },
       {
-        id: "Pizza",
+        id: "i3",
         name: "Pizza",
         info: "Cheassseeeee...!",
         price: 19.99,
@@ -27,18 +27,17 @@ let lists = [
 
 
 const ListItems = () => {
-  
-  
 
   return (
     <div className={style.listItems}>
-      {lists.map((item) => (
+      {lists.map((item,idx) => (
         <Item
-          key={item.id}
+          key={idx}
           name={item.name}
           info={item.info}
           price={item.price}
           count={item.count}
+          id={item.id}
         />
       ))}
     </div>

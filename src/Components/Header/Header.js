@@ -5,10 +5,9 @@ import { useContext } from "react";
 const Header = (props) => {
 
   const cartCtx = useContext(CartContext);
-  console.log(cartCtx.items); 
 
   const totalOrderItemCount = cartCtx.items.reduce((curNumber, item)=> {
-    return curNumber + item.amount;
+    return curNumber + +item.count;
   }, 0)
 
   return (
