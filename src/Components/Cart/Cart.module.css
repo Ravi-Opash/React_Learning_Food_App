@@ -7,8 +7,14 @@
   margin: 0% auto;
   background-color: white;
   outline: 10000px solid rgba(0, 0, 0, 0.75);
-  padding: 2%;
+  /* padding: 2%; */
   border-radius: 20px;
+}
+
+.cart_list{
+  max-height: 14rem;
+  overflow-y: scroll;
+  padding: 10px;
 }
 
 .cart_amount {
@@ -16,6 +22,7 @@
   flex-direction: row;
   justify-content: flex-end;
   gap: 10%;
+  padding-right: 20px;
 }
 
 .msg {
@@ -29,4 +36,22 @@
 .cart_btns {
   display: flex;
   float: right;
+  padding: 20px;
+}
+
+.order{
+  text-align: center;
+  color: rgb(71, 112, 10);
+  font-size: larger;
+  font-weight: 800;
+}
+
+.success_order_box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.close_btn_order{
+  margin: 10px auto;
 }

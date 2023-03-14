@@ -1,16 +1,12 @@
 import CartContext from "../../store/CartContext";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import Button from "../UI/Button";
 import style from "./Item.module.css";
 
 const Item = (props) => {
+
+  const orderCount = useRef()
   const ctx = useContext(CartContext);
-
-  var x;
-
-  const onOrderValueChange = (event) => {
-    x = event.target.value;
-  };
 
   const onAddBtn = (event) => {
     ctx.addItem({
@@ -18,11 +14,10 @@ const Item = (props) => {
       name: props.name,
       info: props.info,
       price: props.price,
-      count: x,
+      count: +orderCount.current.value,
     });
   };
 
-  // console.log(totalOrder)
 
   return (
     <div className={style.main_item_box}>
@@ -38,10 +33,11 @@ const Item = (props) => {
           </label>
           <input
             type="number"
-            onChange={onOrderValueChange}
-            defaultValue={props.count}
+            // onChange={onOrderValueChange}
+            defaultValue={+props.count}
             min={0}
             max={10}
+            ref={orderCount}
           />
         </div>
         <div className={style.add_button}>

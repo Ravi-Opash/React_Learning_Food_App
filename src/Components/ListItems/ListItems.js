@@ -1,45 +1,68 @@
+import { useEffect, useState } from "react";
 import Item from "./Item";
 import style from "./ListItems.module.css";
 
-let lists = [
-    {
-      id: "i1",
-      name: "Sushi",
-      info: "Finest fish and veggies",
-      price: 12.99,
-      count: 0,
-    },
-    {
-        id: "i2",
-        name: "Sndwitch",
-        info: "Finest fish and veggies",
-        price: 9.49,
-        count: 0,
-      },
-      {
-        id: "i3",
-        name: "Pizza",
-        info: "Cheassseeeee...!",
-        price: 14.99,
-        count: 0,
-      }
-  ];
-
-
 const ListItems = () => {
+  const [lists, setLists] = useState([])
+  const [isLoading, setLoading] = useState(true)
+  const [isfetchError, setFetchError] = useState(null)
+
+
+  useEffect(() => {
+    const fetchMeals = async () => {
+      const res = await fetch(
+        "https://react-http-89c52-default-rtdb.firebaseio.com/meals.json"
+      );
+
+      if(!res.ok){
+        throw new Error('Something went wormg...!')
+      }
+
+      const resData = await res.json();
+
+      const meals = [];
+
+      for(const key in resData){
+        meals.push({
+          id: key,
+          name: resData[key].name,
+          info: resData[key].info,
+          price: resData[key].price,
+          count: resData[key].count,
+        })
+      }
+      
+      setLists(meals);
+      setLoading(false);
+    };
+
+
+   
+    fetchMeals().catch(error => {
+      setLoading(false);
+      setFetchError(error.message);
+      console.log('dd');
+
+    });
+  }, []);
+
+  const htmlCode = lists.map((item, idx) => (
+    <Item
+      key={idx}
+      name={item.name}
+      info={item.info}
+      price={item.price}
+      count={item.count}
+      id={item.id}
+    />
+  ))
 
   return (
     <div className={style.listItems}>
-      {lists.map((item,idx) => (
-        <Item
-          key={idx}
-          name={item.name}
-          info={item.info}
-          price={item.price}
-          count={item.count}
-          id={item.id}
-        />
-      ))}
+      {isLoading && <p id={style.loading}>Loading...!</p>}
+      {!isLoading && <p id={style.loading}>{isfetchError}</p>}
+      {!isLoading && !isfetchError && htmlCode}
+
     </div>
   );
 };

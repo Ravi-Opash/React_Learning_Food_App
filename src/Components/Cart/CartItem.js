@@ -7,7 +7,7 @@ const CartItems = (props) => {
   const ctx = useContext(CartContext);
 
   const onPluse = () => {
-    ctx.addItem(props)
+    ctx.addItemInCart(props)
   }
 
   const onRemove = () => {
