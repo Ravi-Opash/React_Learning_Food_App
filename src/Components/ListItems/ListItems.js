@@ -6,21 +6,21 @@ let lists = [
       id: "i1",
       name: "Sushi",
       info: "Finest fish and veggies",
-      price: 22.99,
+      price: 12.99,
       count: 0,
     },
     {
         id: "i2",
         name: "Sndwitch",
         info: "Finest fish and veggies",
-        price: 17.99,
+        price: 9.49,
         count: 0,
       },
       {
         id: "i3",
         name: "Pizza",
         info: "Cheassseeeee...!",
-        price: 19.99,
+        price: 14.99,
         count: 0,
       }
   ];

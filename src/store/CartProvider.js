@@ -8,50 +8,49 @@ const defaultCartState = {
 
 var updateItem;
 var updatedTotalAmount;
-// var existingCartItem;
 
 const cartReducer = (state, action) => {
-  console.log(action.item);
   if (action.type === "ADD") {
     const index = state.items.findIndex((item) => item.key === action.item.id);
-    console.log(index);
 
-    if(index=== -1){
+    if (index === -1) {
       updateItem = state.items.concat(action.item);
-        updatedTotalAmount =
-          state.totalAmount + action.item.price * action.item.count;
-        return {
-          items: updateItem,
-          totalAmount: updatedTotalAmount,
-        };
+      updatedTotalAmount =
+        state.totalAmount + action.item.price * action.item.count;
+      return {
+        items: updateItem,
+        totalAmount: +`${updatedTotalAmount.toFixed(2)}`,
+      };
     }
 
-    for (let i of state.items) {
-      if (i.key === action.item.id) {
-        const existingCartItem = state.items[index];
-        let updateItem;
-        let updateItems;
-
-        if (existingCartItem) {
-          console.log("ff");
-          updateItem = {
-            ...existingCartItem,
-            count: existingCartItem.count + action.item.count,
-          };
-          updateItems = [...state.items];
-          updateItems[index] = updateItem;
-        }
-      } else {
-        updateItem = state.items.concat(action.item);
-        updatedTotalAmount =
-          state.totalAmount + action.item.price * action.item.count;
-        return {
-          items: updateItem,
-          totalAmount: updatedTotalAmount,
-        };
-      }
+    if (index >= 0) {
+      updateItem = state.items;
+      state.items[index].count++;
+      updatedTotalAmount = state.totalAmount + action.item.price;
+      return {
+        items: updateItem,
+        totalAmount: +`${updatedTotalAmount.toFixed(2)}`,
+      };
     }
   }
+
+  if (action.type === "REMOVE") {
+    const index = state.items.findIndex((item) => item.key === action.item.id);
+    updateItem = state.items;
+    if(state.items[index].count<=1){
+      state.items.splice(index, 1);
+    }
+    else{
+      state.items[index].count--;
+    }
+
+    updatedTotalAmount = state.totalAmount - action.item.price;
+    return {
+      items: updateItem,
+      totalAmount: +`${updatedTotalAmount.toFixed(2)}`,
+    };
+  }
+
   return defaultCartState;
 };
 
@@ -65,8 +64,8 @@ const CartProvider = (props) => {
     dispatchCartAction({ type: "ADD", item: item });
   };
 
-  const removeItemToCartHanddler = (id) => {
-    dispatchCartAction({ type: "REMOVE", id: id });
+  const removeItemToCartHanddler = (item) => {
+    dispatchCartAction({ type: "REMOVE", item: item });
   };
 
   const cartContext = {
@@ -84,15 +83,3 @@ const CartProvider = (props) => {
 };
 
 export default CartProvider;
-
-// for (let i of state.items) {
-//   if (i.key === action.item.key) {
-//     state.items.count = state.items.count + action.item.count;
-//     updatedTotalAmount =
-//       state.totalAmount + action.item.price * action.item.count;
-//     return {
-//       items: updateItem,
-//       totalAmount: updatedTotalAmount,
-//     };
-//   }
-// }
